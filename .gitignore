@@ -1,0 +1,27 @@
+Backend/.env
+Frontend/.env
+Notes.txt
+
+Backend/node_modules
+Frontend/node_modules
+
+../test-upload.html
+
+# dependencies
+node_modules/
+
+# env files
+.env
+.env.*
+
+# build files
+dist/
+build/
+
+# logs
+logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

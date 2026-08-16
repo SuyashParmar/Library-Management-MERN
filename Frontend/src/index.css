@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  
+  --animate-neon-pulse: neon-pulse 2s infinite alternate;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes neon-pulse {
+    0% { box-shadow: 0 0 5px #059669, 0 0 10px #059669; border-color: #059669; }
+    100% { box-shadow: 0 0 20px #34d399, 0 0 40px #34d399; border-color: #34d399; }
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: #f8fafc; /* subtle slate-50 background */
+  color: #1f2937; /* dark gray text for readability on white */
+}
+
+.input {
+    @apply w-full border border-gray-200 bg-white text-gray-900 rounded-xl p-3 outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all;
+}
