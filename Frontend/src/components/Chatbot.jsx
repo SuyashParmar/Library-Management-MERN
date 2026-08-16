@@ -25,7 +25,7 @@ const Chatbot = () => {
     setMessages(prev => [...prev, { sender: "bot", text: "..." }]); // Loading state
     
     try {
-      const response = await fetch("http://localhost:3000/api/ai/chat", {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/ai/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userText, history: messages.map(m => ({ role: m.sender === "bot" ? "assistant" : "user", content: m.text })) })

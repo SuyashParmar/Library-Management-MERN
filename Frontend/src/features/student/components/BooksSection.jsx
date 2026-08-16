@@ -72,7 +72,7 @@ const BooksSection = () => {
     if (!search) return;
     setIsAiSearching(true);
     try {
-      const res = await fetch(`http://localhost:3000/api/ai/search?q=${search}`);
+      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/ai/search?q=${search}`);
       const data = await res.json();
       setAiSearchResults(data.ids || []);
     } catch (e) {
