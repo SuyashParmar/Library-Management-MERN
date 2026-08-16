@@ -22,6 +22,7 @@ const BulkUpload = () => {
       setMessage(`✅ ${res.message} (${res.count} books added)`);
       setFile(null);
     } catch (err) {
+      console.error(err);
       setMessage("❌ Upload failed");
     } finally {
       setLoading(false);

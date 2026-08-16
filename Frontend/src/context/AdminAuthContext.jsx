@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React from "react";
 import { useContext, createContext, useEffect, useState } from "react";
 import { adminProfile } from "../api/index";
@@ -12,7 +13,7 @@ export const AdminAuthProvider = ({ children }) => {
     try {
       const data = await adminProfile();
       setAdmin(data);
-    } catch (error) {
+    } catch {
       setAdmin(null);
     } finally {
       setLoading(false);

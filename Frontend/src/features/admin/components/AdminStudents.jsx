@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/set-state-in-effect, react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import {
   getAllStudents,
   deleteStudent,
-  updateStudent,
 } from "../../../api/index";
 
 import { approveBorrowApi } from "../../../api/index";
@@ -15,15 +15,15 @@ const AdminStudents = () => {
   const [expandedRow, setExpandedRow] = useState(null);
   const [selectedStudent, setSelectedStudent] = useState(null);
 
-  useEffect(() => {
-    fetchStudents();
-  }, []);
-
   const fetchStudents = async () => {
     const data = await getAllStudents();
     setStudents(data.students || []);
     setFiltered(data.students || []);
   };
+
+  useEffect(() => {
+    fetchStudents();
+  }, []);
 
   // 🔍 Search
   useEffect(() => {

@@ -12,7 +12,7 @@ const MenuItem = ({ label, active, setActive }) => (
   </button>
 );
 
-const Sidebar = ({ open, setOpen, active, setActive, handleLogout }) => {
+const Sidebar = ({ active, setActive, handleLogout }) => {
   return (
     <aside
       className={`fixed top-0 z-40 h-screen w-64 bg-gradient-to-b from-emerald-800 to-emerald-900 text-white transition-all duration-300 md:left-0 shadow-xl`}

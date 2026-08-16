@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from "react";
 import { userProfile } from "../api/index";
 
@@ -11,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const data = await userProfile();
       setUser(data);
-    } catch (error) {
+    } catch {
       setUser(null);
     } finally {
       setLoading(false);

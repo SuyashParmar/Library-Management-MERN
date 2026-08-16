@@ -38,6 +38,7 @@ const Chatbot = () => {
         return [...newMessages, { sender: "bot", text: data.reply }];
       });
     } catch (e) {
+      console.error(e);
       setMessages(prev => {
         const newMessages = [...prev];
         newMessages.pop(); // remove loading

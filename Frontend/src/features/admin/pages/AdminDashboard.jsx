@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect, react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import ManageBooks from "../components/ManageBooks";
 import AdminStudents from "../components/AdminStudents";
@@ -39,10 +40,6 @@ const AdminDashboard = () => {
   const { admin, loading, setAdmin } = useAdminAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     try {
       const [studentRes, bookRes, statsRes, borrowRes] = await Promise.all([
@@ -59,6 +56,10 @@ const AdminDashboard = () => {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleApprove = async (id) => {
     await approveBorrowApi(id);
