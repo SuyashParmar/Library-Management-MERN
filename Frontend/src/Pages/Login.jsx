@@ -30,7 +30,6 @@ const Login = () => {
 
       if (response.success) {
         await checkUser();
-        navigate("/student/dashboard", { replace: true });
       }
     } catch (error) {
       console.log(error);

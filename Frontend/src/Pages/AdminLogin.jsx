@@ -30,7 +30,6 @@ const AdminLogin = () => {
 
       if (response.success) {
         await checkAdmin();
-        navigate("/admin/dashboard", { replace: true });
       }
     } catch (error) {
       console.log(error);
