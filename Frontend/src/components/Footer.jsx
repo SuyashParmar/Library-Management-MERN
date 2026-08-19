@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-emerald-950 text-gray-300">
+    <footer id="footer" className="bg-emerald-950 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
 
         {/* About */}
@@ -33,7 +33,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center border-t border-gray-700 py-4 text-sm">
-        © {new Date().getFullYear()} SmartLibrary | Developed by Vipin Kumar
+        © {new Date().getFullYear()} SmartLibrary | Developed by Suyash Parmar
       </div>
     </footer>
   );

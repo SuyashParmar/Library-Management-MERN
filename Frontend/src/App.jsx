@@ -17,6 +17,7 @@ import ManageBooks from "./features/admin/components/ManageBooks";
 import AdminStudents from "./features/admin/components/AdminStudents";
 import BulkUpload from "./features/admin/components/BulkUpload";
 import Chatbot from "./components/Chatbot";
+import BooksSection from "./features/student/components/BooksSection";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               {/* Pages with Navbar + Footer */}
               <Route element={<MainLayout />}>
                 <Route path="/" element={<Home />} />
+                <Route path="/books" element={<BooksSection />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
               </Route>

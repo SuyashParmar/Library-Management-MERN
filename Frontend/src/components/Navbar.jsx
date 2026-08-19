@@ -20,12 +20,12 @@ export default function Navbar() {
           <Link className="hover:text-emerald-600 transition-colors" to="/books">
             Books
           </Link>
-          <Link className="hover:text-emerald-600 transition-colors" to="/dashboard">
+          <Link className="hover:text-emerald-600 transition-colors" to="/student/dashboard">
             Dashboard
           </Link>
-          <Link className="hover:text-emerald-600 transition-colors" to="/about">
+          <a className="hover:text-emerald-600 transition-colors cursor-pointer" href="#footer">
             About
-          </Link>
+          </a>
         </div>
 
         {/* Auth Buttons */}
@@ -60,12 +60,12 @@ export default function Navbar() {
           <Link to="/books" className="block">
             Books
           </Link>
-          <Link to="/dashboard" className="block">
+          <Link to="/student/dashboard" className="block">
             Dashboard
           </Link>
-          <Link to="/about" className="block">
+          <a href="#footer" className="block" onClick={() => setOpen(false)}>
             About
-          </Link>
+          </a>
 
           <div className="flex gap-3 pt-2">
             <Link to="/login" className="border px-4 py-2 rounded-lg">

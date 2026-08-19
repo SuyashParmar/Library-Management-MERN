@@ -1,10 +1,14 @@
 import React, { useEffect, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext";
 import { useBook } from "../../../context/BookContext";
 import { requestBookApi, getDashboardApi } from "../../../api/book/borrowApi";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const BooksSection = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const { books, loading, fetchBooks, page, totalPages, setPage } = useBook();
 
   const [search, setSearch] = useState("");
@@ -31,6 +35,7 @@ const BooksSection = () => {
   // 🔥 Fetch Borrow Status (REAL DATA)
   useEffect(() => {
     const fetchBorrowData = async () => {
+      if (!user) return; // Only fetch borrow data if logged in
       try {
         const res = await getDashboardApi();
 
@@ -46,7 +51,7 @@ const BooksSection = () => {
     };
 
     fetchBorrowData();
-  }, []);
+  }, [user]);
 
   // 🔍 Filter books (Local + AI)
   const filteredBooks = useMemo(() => {
@@ -85,6 +90,11 @@ const BooksSection = () => {
 
   // 📥 Borrow Request
   const handleBorrow = async (bookId) => {
+    if (!user) {
+      navigate("/register");
+      return;
+    }
+    
     try {
       setRequesting((prev) => ({ ...prev, [bookId]: true }));
 
@@ -231,9 +241,13 @@ const BooksSection = () => {
                       {(book.bookType === "digital" ||
                         book.bookType === "both") && (
                         <button
-                          onClick={() =>
-                            setSelectedPDF(`${BASE_URL}${book.pdfUrl}`)
-                          }
+                          onClick={() => {
+                            if (!user) {
+                              navigate("/register");
+                              return;
+                            }
+                            setSelectedPDF(`${BASE_URL}${book.pdfUrl}`);
+                          }}
                           className="text-blue-500 hover:text-blue-700 text-sm"
                         >
                           Read
@@ -277,6 +291,10 @@ const BooksSection = () => {
                       {(book.bookType === "physical" || book.bookType === "both") && (
                         <button
                           onClick={() => {
+                            if (!user) {
+                              navigate("/register");
+                              return;
+                            }
                             setSelectedBookForBuy(book);
                             setShowPaymentModal(true);
                             setPaymentStatus("idle");
