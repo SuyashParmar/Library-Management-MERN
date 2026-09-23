@@ -27,26 +27,26 @@ register = async (req, res) => {
       });
     }
 
-    bcrypt.genSalt(10, function (err, salt) {
-      bcrypt.hash(password, salt, async function (err, hash) {
-        const createUser = await userModel.create({
-          username,
-          course,
-          enrollment,
-          school,
-          email,
-          password: hash,
-        });
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt);
+    
+    const createUser = await userModel.create({
+      username,
+      course,
+      enrollment,
+      school,
+      email,
+      password: hash,
+    });
 
-        console.log(createUser);
-        res.json({
-          success: true,
-          message: "User Registered successfully.",
-        });
-      });
+    console.log(createUser);
+    res.json({
+      success: true,
+      message: "User Registered successfully.",
     });
   } catch (error) {
     console.error(error);
+    return res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 
@@ -62,25 +62,23 @@ login = async (req, res) => {
       });
     }
 
-    bcrypt.compare(password, user.password, function (err, result) {
-      if (!result) {
-        return res
-          .status(400)
-          .json({ success: false, message: "Invalid email or password" });
-      }
+    const result = await bcrypt.compare(password, user.password);
+    
+    if (!result) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid email or password" });
+    }
 
-      if (result) {
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRETKEY);
-        res.cookie("userToken", token, {
-          httpOnly: true,
-          secure: true,
-          sameSite: "none",
-        });
-        return res
-          .status(200)
-          .json({ success: true, message: "Login Successful." });
-      }
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRETKEY);
+    res.cookie("userToken", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
     });
+    return res
+      .status(200)
+      .json({ success: true, message: "Login Successful." });
   } catch (error) {
     console.error(error);
     return res

@@ -11,12 +11,14 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (user) {
       navigate("/student/dashboard", { replace: true });
     }
-  }, [user]);
+  }, [user, navigate]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,15 +26,22 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setIsLoading(true);
 
     try {
       const response = await loginUser(form);
 
       if (response.success) {
         await checkUser();
+      } else {
+        setError(response.message || "Failed to login");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      setError("An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -61,6 +70,12 @@ const Login = () => {
 
           <p className="text-gray-500 mb-6 text-sm">Enter your credentials</p>
 
+          {error && (
+            <p className="bg-red-100 text-red-700 p-2 rounded mb-3 text-sm">
+              {error}
+            </p>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               name="email"
@@ -82,9 +97,10 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+              disabled={isLoading}
+              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Login
+              {isLoading ? "Logging in..." : "Login"}
             </button>
           </form>
 

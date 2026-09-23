@@ -11,12 +11,14 @@ const AdminLogin = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (admin) {
       navigate("/admin/dashboard", { replace: true });
     }
-  }, [admin]);
+  }, [admin, navigate]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,15 +26,22 @@ const AdminLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setIsLoading(true);
 
     try {
       const response = await loginAdmin(form);
 
       if (response.success) {
         await checkAdmin();
+      } else {
+        setError(response.message || "Failed to login");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      setError("An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -62,6 +71,12 @@ const AdminLogin = () => {
             Login to access admin dashboard
           </p>
 
+          {error && (
+            <p className="bg-red-100 text-red-700 p-2 rounded mb-3 text-sm">
+              {error}
+            </p>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               name="email"
@@ -83,9 +98,10 @@ const AdminLogin = () => {
 
             <button
               type="submit"
-              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+              disabled={isLoading}
+              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Login as Admin
+              {isLoading ? "Logging in..." : "Login as Admin"}
             </button>
           </form>
         </div>

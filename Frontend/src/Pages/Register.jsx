@@ -14,6 +14,7 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -32,19 +33,18 @@ const Register = () => {
       return;
     }
 
-    const response = await registerUser(form);
+    setIsLoading(true);
 
-    console.log(response);
-    console.log(response.success);
+    try {
+      const response = await registerUser(form);
 
-    if (!response.success) {
-      setError(response.message);
-      return;
-    }
+      if (!response.success) {
+        setError(response.message || "Failed to register");
+        return;
+      }
 
-    setSuccess("Account created successfully.");
+      setSuccess("Account created successfully.");
 
-    if (response.success) {
       setForm({
         username: "",
         course: "",
@@ -54,7 +54,14 @@ const Register = () => {
         password: "",
       });
 
-      navigate("/login");
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
+    } catch (err) {
+      console.error(err);
+      setError("An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -172,9 +179,10 @@ const Register = () => {
 
             <button
               type="submit"
-              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+              disabled={isLoading}
+              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Create Account
+              {isLoading ? "Creating Account..." : "Create Account"}
             </button>
           </form>
 
