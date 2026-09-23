@@ -73,8 +73,8 @@ login = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRETKEY);
     res.cookie("userToken", token, {
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     });
     return res
       .status(200)
