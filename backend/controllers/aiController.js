@@ -32,7 +32,7 @@ const chatBot = async (req, res) => {
 
     const chatCompletion = await groq.chat.completions.create({
       messages: messages,
-      model: "llama-3.3-70b-versatile",
+      model: "llama3-70b-8192",
       temperature: 0.5,
     });
 
@@ -66,7 +66,7 @@ const semanticSearch = async (req, res) => {
         { role: "system", content: systemPrompt },
         { role: "user", content: `Search Query: "${query}"` }
       ],
-      model: "llama-3.3-70b-versatile",
+      model: "llama3-70b-8192",
       temperature: 0,
       response_format: { type: "json_object" }
     });
