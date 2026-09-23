@@ -8,8 +8,8 @@ const AdminLogin = () => {
   const { checkAdmin, admin } = useAdminAuth();
 
   const [form, setForm] = useState({
-    email: "",
-    password: "",
+    email: "admin@gmail.com",
+    password: "admin123",
   });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -87,6 +87,7 @@ const AdminLogin = () => {
               placeholder="Admin Email"
               className="input"
               onChange={handleChange}
+              value={form.email}
               required
             />
 
@@ -96,6 +97,7 @@ const AdminLogin = () => {
               placeholder="Password"
               className="input"
               onChange={handleChange}
+              value={form.password}
               required
             />
 

@@ -33,6 +33,12 @@ export default function Navbar() {
         {/* Auth Buttons */}
         <div className="hidden md:flex gap-4">
           <Link
+            to="/admin/login"
+            className="px-4 py-2 border border-emerald-200 text-emerald-700 bg-emerald-50 rounded-xl hover:bg-emerald-100 transition-colors"
+          >
+            Admin Panel
+          </Link>
+          <Link
             to="/register"
             className="px-4 py-2 border border-gray-200 rounded-xl hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
           >
@@ -69,16 +75,21 @@ export default function Navbar() {
             About
           </a>
 
-          <div className="flex gap-3 pt-2">
-            <Link to="/login" className="border px-4 py-2 rounded-lg">
-              Login
+          <div className="flex flex-col gap-3 pt-2">
+            <Link to="/admin/login" className="border border-emerald-200 text-emerald-700 bg-emerald-50 px-4 py-2 rounded-lg text-center">
+              Admin Panel
             </Link>
-            <Link
-              to="/register"
-              className="bg-emerald-600 text-white px-4 py-2 rounded-xl"
-            >
-              Register
-            </Link>
+            <div className="flex gap-3">
+              <Link to="/login" className="border px-4 py-2 rounded-lg w-full text-center">
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="bg-emerald-600 text-white px-4 py-2 rounded-xl w-full text-center"
+              >
+                Register
+              </Link>
+            </div>
           </div>
         </div>
       )}
