@@ -33,6 +33,9 @@ const AdminLogin = () => {
       const response = await loginAdmin(form);
 
       if (response.success) {
+        if (response.token) {
+          localStorage.setItem("adminToken", response.token);
+        }
         await checkAdmin();
       } else {
         setError(response.message || "Failed to login");

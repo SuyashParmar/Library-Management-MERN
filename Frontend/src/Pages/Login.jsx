@@ -33,6 +33,9 @@ const Login = () => {
       const response = await loginUser(form);
 
       if (response.success) {
+        if (response.token) {
+          localStorage.setItem("userToken", response.token);
+        }
         await checkUser();
       } else {
         setError(response.message || "Failed to login");
