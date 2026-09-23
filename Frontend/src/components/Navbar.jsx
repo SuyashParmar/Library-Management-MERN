@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
 
   return (
     <nav className="bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100 fixed w-full z-50 transition-all">
@@ -17,7 +19,7 @@ export default function Navbar() {
           <Link className="hover:text-emerald-600 transition-colors" to="/">
             Home
           </Link>
-          <Link className="hover:text-emerald-600 transition-colors" to="/books">
+          <Link className="hover:text-emerald-600 transition-colors" to={user ? "/books" : "/register"}>
             Books
           </Link>
           <Link className="hover:text-emerald-600 transition-colors" to="/student/dashboard">
@@ -57,7 +59,7 @@ export default function Navbar() {
           <Link to="/" className="block">
             Home
           </Link>
-          <Link to="/books" className="block">
+          <Link to={user ? "/books" : "/register"} className="block">
             Books
           </Link>
           <Link to="/student/dashboard" className="block">

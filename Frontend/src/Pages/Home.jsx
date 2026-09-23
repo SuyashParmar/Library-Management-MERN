@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Home = () => {
+  const { user } = useAuth();
+  
   return (
     <div className="bg-slate-950 text-white min-h-screen overflow-hidden selection:bg-emerald-500 selection:text-white">
       {/* HERO SECTION WITH AI BANNER */}
@@ -38,7 +41,7 @@ const Home = () => {
             </Link>
 
             <Link
-              to="/books"
+              to={user ? "/books" : "/register"}
               className="px-8 py-4 rounded-xl font-bold text-lg text-white border-2 border-white/20 hover:border-emerald-400 hover:bg-emerald-900/20 hover:text-emerald-300 transition-all duration-300 backdrop-blur-md uppercase tracking-widest font-display shadow-[0_0_0_rgba(16,185,129,0)] hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
             >
               Browse Data
