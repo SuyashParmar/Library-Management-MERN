@@ -32,20 +32,14 @@ const chatBot = async (req, res) => {
 
     const chatCompletion = await groq.chat.completions.create({
       messages: messages,
-      model: "llama-3.1-8b-instant",
+      model: "openai/gpt-oss-20b",
       temperature: 0.5,
     });
 
     res.json({ reply: chatCompletion.choices[0]?.message?.content || "I couldn't process that request." });
   } catch (error) {
     console.error("Chatbot error:", error);
-    try {
-      const models = await groq.models.list();
-      const modelIds = models.data.map(m => m.id).join(", ");
-      res.status(500).json({ reply: `I'm having trouble. Available models: ${modelIds}` });
-    } catch (e) {
-      res.status(500).json({ reply: `I'm having trouble connecting to my brain right now! Error: ${error.message}` });
-    }
+    res.status(500).json({ reply: "I'm having trouble connecting to my brain right now! Please try again later." });
   }
 };
 
@@ -72,7 +66,7 @@ const semanticSearch = async (req, res) => {
         { role: "system", content: systemPrompt },
         { role: "user", content: `Search Query: "${query}"` }
       ],
-      model: "llama-3.1-8b-instant",
+      model: "openai/gpt-oss-20b",
       temperature: 0,
       response_format: { type: "json_object" }
     });
@@ -81,7 +75,7 @@ const semanticSearch = async (req, res) => {
     res.json(result);
   } catch (error) {
     console.error("Semantic search error:", error);
-    res.status(500).json({ ids: [], error: error.message });
+    res.status(500).json({ ids: [] });
   }
 };
 
