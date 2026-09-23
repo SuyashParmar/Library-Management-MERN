@@ -8,8 +8,8 @@ const AdminLogin = () => {
   const { checkAdmin, admin } = useAdminAuth();
 
   const [form, setForm] = useState({
-    email: "admin@gmail.com",
-    password: "admin123",
+    email: "suyashparmar44@gmail.com",
+    password: "suyash1234P@",
   });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
