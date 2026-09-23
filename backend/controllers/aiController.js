@@ -39,7 +39,7 @@ const chatBot = async (req, res) => {
     res.json({ reply: chatCompletion.choices[0]?.message?.content || "I couldn't process that request." });
   } catch (error) {
     console.error("Chatbot error:", error);
-    res.status(500).json({ reply: "I'm having trouble connecting to my brain right now! Please try again later." });
+    res.status(500).json({ reply: `I'm having trouble connecting to my brain right now! Error: ${error.message}` });
   }
 };
 
@@ -75,7 +75,7 @@ const semanticSearch = async (req, res) => {
     res.json(result);
   } catch (error) {
     console.error("Semantic search error:", error);
-    res.status(500).json({ ids: [] });
+    res.status(500).json({ ids: [], error: error.message });
   }
 };
 
