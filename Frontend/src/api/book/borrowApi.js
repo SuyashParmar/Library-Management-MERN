@@ -2,7 +2,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // ================= STUDENT =================
 
-// 📥 Request book
+//  Request book
 export const requestBookApi = (bookId) =>
   fetch(`${BASE_URL}/borrow/request`, {
     method: "POST",
@@ -11,13 +11,13 @@ export const requestBookApi = (bookId) =>
     body: JSON.stringify({ bookId }),
   }).then((res) => res.json());
 
-// 📊 Dashboard
+//  Dashboard
 export const getDashboardApi = () =>
   fetch(`${BASE_URL}/borrow/dashboard`, {
     credentials: "include",
   }).then((res) => res.json());
 
-// 🔄 Return book
+//  Return book
 export const returnBookApi = (id) =>
   fetch(`${BASE_URL}/borrow/return/${id}`, {
     method: "PUT",
@@ -26,7 +26,7 @@ export const returnBookApi = (id) =>
 
 // ================= ADMIN =================
 
-// 📊 Admin Stats
+//  Admin Stats
 export const getAdminStatsApi = async () => {
   const res = await fetch(`${BASE_URL}/borrow/admin/stats`, {
     credentials: "include",
@@ -34,7 +34,7 @@ export const getAdminStatsApi = async () => {
   return res.json();
 };
 
-// 📋 All Borrow Requests
+//  All Borrow Requests
 export const getAllBorrowsApi = async () => {
   const res = await fetch(`${BASE_URL}/borrow/admin/borrows`, {
     credentials: "include",
@@ -42,7 +42,7 @@ export const getAllBorrowsApi = async () => {
   return res.json();
 };
 
-// ✅ Approve Request
+//  Approve Request
 export const approveBorrowApi = async (id) => {
   const res = await fetch(`${BASE_URL}/borrow/admin/approve/${id}`, {
     method: "PUT",
@@ -51,7 +51,7 @@ export const approveBorrowApi = async (id) => {
   return res.json();
 };
 
-// ❌ Reject Request (NEW)
+//  Reject Request (NEW)
 export const rejectBorrowApi = async (id) => {
   const res = await fetch(`${BASE_URL}/borrow/admin/reject/${id}`, {
     method: "PUT",

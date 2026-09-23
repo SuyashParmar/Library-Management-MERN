@@ -5,7 +5,7 @@ const BookRequest = ({ borrows, onApprove }) => {
   const [filteredBorrows, setFilteredBorrows] = useState(borrows);
   const [selectedStudent, setSelectedStudent] = useState(null);
 
-  // 🔍 HANDLE SEARCH (ONLY WHEN BUTTON CLICK)
+  //  HANDLE SEARCH (ONLY WHEN BUTTON CLICK)
   const handleSearch = () => {
     const result = borrows.filter((b) => {
       const name = b.user?.username?.toLowerCase() || "";
@@ -18,7 +18,7 @@ const BookRequest = ({ borrows, onApprove }) => {
     setFilteredBorrows(result);
   };
 
-  // 🔄 Reset Search
+  //  Reset Search
   const handleReset = () => {
     setSearchName("");
     setFilteredBorrows(borrows);
@@ -26,9 +26,9 @@ const BookRequest = ({ borrows, onApprove }) => {
 
   return (
     <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-      <h2 className="text-xl font-bold mb-5">📚 Borrow Requests</h2>
+      <h2 className="text-xl font-bold mb-5"> Borrow Requests</h2>
 
-      {/* 🔍 SEARCH */}
+      {/*  SEARCH */}
       <div className="flex gap-4 mb-6 flex-wrap items-center">
         <input
           type="text"
@@ -53,9 +53,9 @@ const BookRequest = ({ borrows, onApprove }) => {
         </button>
       </div>
 
-      {/* 📭 EMPTY */}
+      {/*  EMPTY */}
       {filteredBorrows.length === 0 ? (
-        <p className="text-gray-400 text-center py-6">No requests found 📭</p>
+        <p className="text-gray-400 text-center py-6">No requests found </p>
       ) : (
         <div className="space-y-4">
           {filteredBorrows.map((b) => (
@@ -104,7 +104,7 @@ const BookRequest = ({ borrows, onApprove }) => {
         </div>
       )}
 
-      {/* 🔥 STUDENT MODAL */}
+      {/*  STUDENT MODAL */}
       {selectedStudent && (
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
           <div className="bg-white w-[90%] max-w-lg rounded-xl shadow-lg p-6 relative">

@@ -55,10 +55,10 @@ const Login = () => {
           </p>
 
           <ul className="mt-6 space-y-2 text-xl  font-medium">
-            <li>📚 View borrowed books</li>
-            <li>⏰ Track due dates</li>
-            <li>💳 Fine status</li>
-            <li>📩 Notifications</li>
+            <li> View borrowed books</li>
+            <li> Track due dates</li>
+            <li> Fine status</li>
+            <li> Notifications</li>
           </ul>
         </div>
 

@@ -42,7 +42,7 @@ const ProfileSection = ({ user, onUpdate }) => {
             onClick={() => setIsEditing(true)}
             className="text-indigo-600 hover:text-indigo-800 text-sm"
           >
-            Edit ✏️
+            Edit 
           </button>
         ) : (
           <button

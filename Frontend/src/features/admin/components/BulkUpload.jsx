@@ -9,7 +9,7 @@ const BulkUpload = () => {
 
   const handleUpload = async () => {
     if (!file) {
-      setMessage("⚠️ Please select a CSV file");
+      setMessage(" Please select a CSV file");
       return;
     }
 
@@ -19,11 +19,11 @@ const BulkUpload = () => {
 
       const res = await bulkUploadBooksApi(file);
 
-      setMessage(`✅ ${res.message} (${res.count} books added)`);
+      setMessage(` ${res.message} (${res.count} books added)`);
       setFile(null);
     } catch (err) {
       console.error(err);
-      setMessage("❌ Upload failed");
+      setMessage(" Upload failed");
     } finally {
       setLoading(false);
     }
@@ -37,7 +37,7 @@ const BulkUpload = () => {
     if (droppedFile && droppedFile.type.includes("csv")) {
       setFile(droppedFile);
     } else {
-      setMessage("❌ Only CSV files allowed");
+      setMessage(" Only CSV files allowed");
     }
   };
 
@@ -46,7 +46,7 @@ const BulkUpload = () => {
       {/* Title */}
       <div>
         <h2 className="text-xl font-bold text-gray-800">
-          📂 Bulk Upload Books
+           Bulk Upload Books
         </h2>
         <p className="text-sm text-gray-500 mt-1">
           Upload multiple books using CSV file
@@ -81,7 +81,7 @@ const BulkUpload = () => {
       {/* File Preview */}
       {file && (
         <div className="flex items-center justify-between bg-gray-50 p-3 rounded-lg border">
-          <div className="text-sm text-gray-700 truncate">📄 {file.name}</div>
+          <div className="text-sm text-gray-700 truncate"> {file.name}</div>
 
           <button
             onClick={() => setFile(null)}

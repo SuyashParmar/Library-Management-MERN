@@ -25,7 +25,7 @@ const AdminStudents = () => {
     fetchStudents();
   }, []);
 
-  // 🔍 Search
+  //  Search
   useEffect(() => {
     const result = students.filter((s) =>
       (s.username || "").toLowerCase().includes(search.toLowerCase()),
@@ -33,14 +33,14 @@ const AdminStudents = () => {
     setFiltered(result);
   }, [search, students]);
 
-  // 🗑 Delete
+  //  Delete
   const handleDelete = async (id) => {
     if (!confirm("Delete this student?")) return;
     await deleteStudent(id);
     fetchStudents();
   };
 
-  // ✅ Approve Request
+  //  Approve Request
   const handleApprove = async (borrowId) => {
     await approveBorrowApi(borrowId);
     fetchStudents();
@@ -90,7 +90,7 @@ const AdminStudents = () => {
                   <td className="p-4">{s.email}</td>
                   <td className="p-4">{s.course}</td>
 
-                  {/* 🔥 Real Data */}
+                  {/*  Real Data */}
                   <td className="p-4 text-blue-600">{s.borrowCount}</td>
                   <td className="p-4 text-yellow-600">{s.pendingCount}</td>
 
@@ -128,7 +128,7 @@ const AdminStudents = () => {
                   </td>
                 </tr>
 
-                {/* 🔥 EXPANDED ROW (REQUESTS) */}
+                {/*  EXPANDED ROW (REQUESTS) */}
                 {expandedRow === s._id && (
                   <tr className="bg-gray-50">
                     <td colSpan="7" className="p-4">

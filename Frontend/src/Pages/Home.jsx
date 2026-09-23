@@ -84,12 +84,12 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              ["📚 Quantum Storage", "Holographic indexing of all physical and digital assets."],
-              ["👥 Neural Sync", "Track user borrowing patterns with advanced algorithms."],
-              ["📊 Overseer Matrix", "God-eye view of all library operations and analytics."],
-              ["🔐 Biometric Login", "Military-grade role based authentication."],
-              ["⚡ Hyper Search", "Sub-millisecond data retrieval engine."],
-              ["☁ Cloud Nexus", "Decentralized MongoDB powered infrastructure."],
+              [" Quantum Storage", "Holographic indexing of all physical and digital assets."],
+              [" Neural Sync", "Track user borrowing patterns with advanced algorithms."],
+              [" Overseer Matrix", "God-eye view of all library operations and analytics."],
+              [" Biometric Login", "Military-grade role based authentication."],
+              [" Hyper Search", "Sub-millisecond data retrieval engine."],
+              [" Cloud Nexus", "Decentralized MongoDB powered infrastructure."],
             ].map((f, i) => (
               <div
                 key={i}

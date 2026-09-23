@@ -106,7 +106,7 @@ export default function ManageBooks() {
                     </span>
                   </td>
 
-                  {/* 🔥 Availability (SMART) */}
+                  {/*  Availability (SMART) */}
                   <td className="p-4 text-gray-700">
                     {book.bookType === "physical" && (
                       <>
@@ -135,7 +135,7 @@ export default function ManageBooks() {
                     )}
                   </td>
 
-                  {/* 🔥 Status */}
+                  {/*  Status */}
                   <td className="p-4">
                     {book.bookType === "physical" && (
                       <span
@@ -174,7 +174,7 @@ export default function ManageBooks() {
                     )}
                   </td>
 
-                  {/* 🔥 Actions */}
+                  {/*  Actions */}
                   <td className="p-4 text-center space-x-3">
                     {(book.bookType === "digital" ||
                       book.bookType === "both") && (

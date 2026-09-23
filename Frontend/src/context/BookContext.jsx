@@ -16,7 +16,7 @@ export const BookProvider = ({ children }) => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  // ✅ FIXED (no re-render loop)
+  //  FIXED (no re-render loop)
   const fetchBooks = useCallback(async (pageNum = 1) => {
     setLoading(true);
     try {

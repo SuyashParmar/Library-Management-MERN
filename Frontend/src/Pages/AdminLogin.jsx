@@ -56,10 +56,10 @@ const AdminLogin = () => {
           </p>
 
           <ul className="mt-6 space-y-2 text-xl font-medium">
-            <li>📚 Manage Books</li>
-            <li>👨‍🎓 Manage Students</li>
-            <li>📊 Library Reports</li>
-            <li>💰 Fine Management</li>
+            <li> Manage Books</li>
+            <li> Manage Students</li>
+            <li> Library Reports</li>
+            <li> Fine Management</li>
           </ul>
         </div>
 

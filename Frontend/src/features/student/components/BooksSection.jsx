@@ -14,25 +14,25 @@ const BooksSection = () => {
   const [search, setSearch] = useState("");
   const [selectedPDF, setSelectedPDF] = useState(null);
 
-  // 🤖 AI Search State
+  //  AI Search State
   const [aiSearchResults, setAiSearchResults] = useState(null);
   const [isAiSearching, setIsAiSearching] = useState(false);
 
-  // 🔥 New States
+  //  New States
   const [requesting, setRequesting] = useState({});
   const [borrowMap, setBorrowMap] = useState({});
 
-  // 💳 Payment States
+  //  Payment States
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [selectedBookForBuy, setSelectedBookForBuy] = useState(null);
   const [paymentStatus, setPaymentStatus] = useState("idle");
 
-  // 📚 Fetch Books
+  //  Fetch Books
   useEffect(() => {
     fetchBooks(page);
   }, [page]);
 
-  // 🔥 Fetch Borrow Status (REAL DATA)
+  //  Fetch Borrow Status (REAL DATA)
   useEffect(() => {
     const fetchBorrowData = async () => {
       if (!user) return; // Only fetch borrow data if logged in
@@ -53,7 +53,7 @@ const BooksSection = () => {
     fetchBorrowData();
   }, [user]);
 
-  // 🔍 Filter books (Local + AI)
+  //  Filter books (Local + AI)
   const filteredBooks = useMemo(() => {
     if (aiSearchResults !== null) {
       return books?.filter(book => aiSearchResults.includes(book._id)) || [];
@@ -72,7 +72,7 @@ const BooksSection = () => {
     if (!search) setAiSearchResults(null);
   }, [search]);
 
-  // 🤖 Perform AI Search
+  //  Perform AI Search
   const handleAiSearch = async () => {
     if (!search) return;
     setIsAiSearching(true);
@@ -88,7 +88,7 @@ const BooksSection = () => {
     }
   };
 
-  // 📥 Borrow Request
+  //  Borrow Request
   const handleBorrow = async (bookId) => {
     if (!user) {
       navigate("/register");
@@ -135,7 +135,7 @@ const BooksSection = () => {
           disabled={isAiSearching || !search}
           className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 font-medium transition-colors disabled:bg-purple-300"
         >
-          {isAiSearching ? "Thinking..." : "✨ AI Search"}
+          {isAiSearching ? "Thinking..." : " AI Search"}
         </button>
       </div>
 
@@ -214,7 +214,7 @@ const BooksSection = () => {
                       )}
                     </td>
 
-                    {/* 🔥 Status */}
+                    {/*  Status */}
                     <td className="p-4">
                       {status === "pending" && (
                         <span className="bg-yellow-100 text-yellow-600 px-2 py-1 rounded text-xs">
@@ -237,7 +237,7 @@ const BooksSection = () => {
 
                     {/* Actions */}
                     <td className="p-4 text-center space-x-3">
-                      {/* 📖 Read */}
+                      {/*  Read */}
                       {(book.bookType === "digital" ||
                         book.bookType === "both") && (
                         <button
@@ -254,7 +254,7 @@ const BooksSection = () => {
                         </button>
                       )}
 
-                      {/* 📥 Borrow */}
+                      {/*  Borrow */}
                       {(book.bookType === "physical" ||
                         book.bookType === "both") && (
                         <button
@@ -287,7 +287,7 @@ const BooksSection = () => {
                         </button>
                       )}
 
-                      {/* 💳 Buy */}
+                      {/*  Buy */}
                       {(book.bookType === "physical" || book.bookType === "both") && (
                         <button
                           onClick={() => {
@@ -328,7 +328,7 @@ const BooksSection = () => {
         ))}
       </div>
 
-      {/* 📖 PDF Viewer */}
+      {/*  PDF Viewer */}
       {selectedPDF && (
         <div className="fixed inset-0 bg-black/60 flex justify-center items-center z-50">
           <div className="bg-white w-[90%] h-[90%] rounded-xl overflow-hidden">
@@ -342,7 +342,7 @@ const BooksSection = () => {
         </div>
       )}
 
-      {/* 💳 Fake Payment Modal */}
+      {/*  Fake Payment Modal */}
       {showPaymentModal && selectedBookForBuy && (
         <div className="fixed inset-0 bg-black/60 flex justify-center items-center z-50">
           <div className="bg-white w-[90%] md:w-[400px] rounded-2xl shadow-2xl overflow-hidden">
@@ -403,7 +403,7 @@ const BooksSection = () => {
               {paymentStatus === "success" && (
                 <div className="py-8 flex flex-col items-center justify-center text-center space-y-4 animate-in zoom-in">
                   <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-2 shadow-inner">
-                    <span className="text-5xl">✅</span>
+                    <span className="text-5xl"></span>
                   </div>
                   <h3 className="text-2xl font-bold text-green-600">Payment Successful!</h3>
                   <p className="text-gray-600 text-sm">Your purchase of <br/><span className="font-semibold text-gray-900 text-base">"{selectedBookForBuy.title}"</span><br/> has been confirmed.</p>

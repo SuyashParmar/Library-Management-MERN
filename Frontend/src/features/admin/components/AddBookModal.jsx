@@ -51,7 +51,7 @@ export default function AddBookModal({ onClose, book }) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
-  // 🔥 Prefill in edit mode
+  //  Prefill in edit mode
   useEffect(() => {
     if (book) {
       setForm({
@@ -69,18 +69,18 @@ export default function AddBookModal({ onClose, book }) {
     }
   }, [book]);
 
-  // 🔥 Handle input change
+  //  Handle input change
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // 🔥 Cover preview
+  //  Cover preview
   const handleCoverChange = (file) => {
     setCoverImage(file);
     setCoverPreview(URL.createObjectURL(file));
   };
 
-  // 🔥 Submit
+  //  Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);

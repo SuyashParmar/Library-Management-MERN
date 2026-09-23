@@ -76,10 +76,10 @@ const Register = () => {
           </p>
 
           <ul className="mt-6 space-y-2 text-xl font-medium">
-            <li>📚 Digital Library Access</li>
-            <li>🧾 Borrow History</li>
-            <li>⏰ Fine Tracking</li>
-            <li>📩 Email Verification</li>
+            <li> Digital Library Access</li>
+            <li> Borrow History</li>
+            <li> Fine Tracking</li>
+            <li> Email Verification</li>
           </ul>
         </div>
 
