@@ -109,6 +109,21 @@ const AdminLogin = () => {
               {isLoading ? "Logging in..." : "Login as Admin"}
             </button>
           </form>
+
+          <button
+            onClick={async () => {
+              try {
+                const res = await fetch(`${import.meta.env.VITE_BASE_URL}/admin/register`);
+                const data = await res.json();
+                alert(data.message || "Admin initialized successfully!");
+              } catch (e) {
+                alert("Failed to initialize admin: " + e.message);
+              }
+            }}
+            className="w-full mt-4 bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl font-bold transition-all duration-300"
+          >
+            Initialize Admin Database
+          </button>
         </div>
       </div>
     </div>
