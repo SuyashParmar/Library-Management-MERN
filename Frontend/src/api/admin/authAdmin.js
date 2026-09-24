@@ -26,6 +26,7 @@ export const logoutAdmin = async (data) => {
       credentials: "include",
       body: JSON.stringify(data),
     });
+    localStorage.removeItem("adminToken");
     return await res.json();
   } catch (error) {
     return { success: false, message: "Network or server error" };

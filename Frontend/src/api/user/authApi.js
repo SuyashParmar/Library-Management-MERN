@@ -42,6 +42,7 @@ export const logoutUser = async (data) => {
       credentials: "include",
       body: JSON.stringify(data),
     });
+    localStorage.removeItem("userToken");
     return await res.json();
   } catch (error) {
     return { success: false, message: "Network or server error" };
