@@ -17,11 +17,6 @@ const Home = () => {
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-950/20 via-slate-950/60 to-slate-950" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mt-10">
-          <div className="inline-block animate-float">
-            <span className="px-4 py-1.5 rounded-full bg-emerald-900/50 border border-emerald-500 text-emerald-400 text-sm font-bold uppercase tracking-widest backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.5)]">
-              Next Generation Library
-            </span>
-          </div>
 
           <h1 className="mt-8 text-5xl md:text-7xl font-black tracking-tighter uppercase font-display bg-gradient-to-r from-emerald-300 via-teal-400 to-emerald-600 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(16,185,129,0.8)] animate-pulse">
             SMART LIBRARY <br /> <span className="text-white drop-shadow-none font-sans lowercase text-4xl md:text-6xl font-light">management matrix</span>
