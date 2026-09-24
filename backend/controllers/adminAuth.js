@@ -4,8 +4,8 @@ const bcrypt = require("bcrypt");
 
 const register = async (req, res) => {
   // its help creating user first time to mongoDB database
-  const email = req.body?.email || process.env.ADMIN_EMAIL;
-  const password = req.body?.password || process.env.ADMIN_PASSWORD;
+  const email = req.body?.email || process.env.ADMIN_EMAIL || "admin@gmail.com";
+  const password = req.body?.password || process.env.ADMIN_PASSWORD || "admin123";
 
   try {
     const existingAdmin = await adminModel.findOne({ email });
