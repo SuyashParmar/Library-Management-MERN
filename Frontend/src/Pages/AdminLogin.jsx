@@ -113,7 +113,7 @@ const AdminLogin = () => {
           <button
             onClick={async () => {
               try {
-                const res = await fetch(`${import.meta.env.VITE_BASE_URL}/admin/register`);
+                const res = await fetch(`${import.meta.env.VITE_BASE_URL}/admin/register?email=${encodeURIComponent(form.email)}&password=${encodeURIComponent(form.password)}`);
                 const data = await res.json();
                 alert(data.message || "Admin initialized successfully!");
               } catch (e) {
